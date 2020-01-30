@@ -1,7 +1,13 @@
 package top.kerstholt.springwithspringboot;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import top.kerstholt.springwithspringboot.data.entity.Room;
+import top.kerstholt.springwithspringboot.data.repository.RoomRepository;
 
 /**
  * The @SpringBootApplication annotation
@@ -18,4 +24,17 @@ public class SpringWithSpringBootApplication {
 		SpringApplication.run(SpringWithSpringBootApplication.class, args);
 	}
 
+	// REST controller to test the RoomRepository.
+	@RestController
+	@RequestMapping("/rooms")
+	public class RoomController {
+
+		@Autowired
+		private RoomRepository roomRepository;
+
+		@GetMapping
+		public Iterable<Room> getRooms() {
+			return this.roomRepository.findAll();
+		}
+	}
 }
