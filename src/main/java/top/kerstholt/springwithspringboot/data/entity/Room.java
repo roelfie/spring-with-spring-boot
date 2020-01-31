@@ -1,7 +1,19 @@
 package top.kerstholt.springwithspringboot.data.entity;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
 @Entity
 @Table(name="ROOM")
 public class Room {
@@ -20,35 +32,8 @@ public class Room {
     @Column(name="BED_INFO")
     private String bedInfo;
 
-    public long getRoomId() {
-        return roomId;
-    }
+    @OneToMany(mappedBy="room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<Reservation> reservations = new ArrayList<>();
 
-    public void setRoomId(long roomId) {
-        this.roomId = roomId;
-    }
-
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
-
-    public String getRoomNumber() {
-        return roomNumber;
-    }
-
-    public void setRoomNumber(String roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
-    public String getBedInfo() {
-        return bedInfo;
-    }
-
-    public void setBedInfo(String bedInfo) {
-        this.bedInfo = bedInfo;
-    }
 }

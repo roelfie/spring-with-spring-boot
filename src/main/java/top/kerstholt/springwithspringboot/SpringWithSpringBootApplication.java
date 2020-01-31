@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import top.kerstholt.springwithspringboot.data.entity.Reservation;
 import top.kerstholt.springwithspringboot.data.entity.Room;
+import top.kerstholt.springwithspringboot.data.repository.ReservationRepository;
 import top.kerstholt.springwithspringboot.data.repository.RoomRepository;
 
 /**
@@ -35,6 +37,19 @@ public class SpringWithSpringBootApplication {
 		@GetMapping
 		public Iterable<Room> getRooms() {
 			return this.roomRepository.findAll();
+		}
+	}
+
+	@RestController
+	@RequestMapping("/reservations")
+	public class ReservationController {
+
+		@Autowired
+		private ReservationRepository reservationRepository;
+
+		@GetMapping
+		public Iterable<Reservation> getReservations() {
+			return this.reservationRepository.findAll();
 		}
 	}
 }

@@ -1,4 +1,9 @@
 package top.kerstholt.springwithspringboot.data.repository;
 
-public interface ReservationRepository {
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import top.kerstholt.springwithspringboot.data.entity.Reservation;
+
+@Repository
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 }
