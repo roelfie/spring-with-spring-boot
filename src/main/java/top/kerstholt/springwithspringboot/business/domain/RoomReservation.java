@@ -2,6 +2,7 @@ package top.kerstholt.springwithspringboot.business.domain;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
