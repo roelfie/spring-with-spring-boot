@@ -22,6 +22,7 @@ public class RoomReservationWebController {
         this.reservationService = reservationService;
     }
 
+    // http://localhost:8080/reservations?date=2020-01-01
     @GetMapping
     public String getReservations(@RequestParam(value="date", required=false) String dateString, Model model) {
         Date date = DateUtils.createDateFromString(dateString);

@@ -47,29 +47,29 @@ public class SpringWithSpringBootApplication {
 		}
 	}
 
-	@RestController
-	@RequestMapping("/reservations")
-	public class ReservationsController {
-
-		@Autowired
-		private ReservationRepository reservationRepository;
-
-		@GetMapping
-		public Iterable<Reservation> getReservations() {
-			return this.reservationRepository.findAll();
-		}
-	}
-
-	@RestController
-	@RequestMapping("/reservations/{date}")
-	public class ReservationController {
-
-		@Autowired
-		private ReservationService reservationService;
-
-		@GetMapping
-		public List<RoomReservation> getReservations(@PathVariable("date") String sDate) {
-			return this.reservationService.getRoomReservations(Date.valueOf(LocalDate.parse(sDate)));
-		}
-	}
+//	@RestController
+//	@RequestMapping("/reservations")
+//	public class ReservationsController {
+//
+//		@Autowired
+//		private ReservationRepository reservationRepository;
+//
+//		@GetMapping
+//		public Iterable<Reservation> getReservations() {
+//			return this.reservationRepository.findAll();
+//		}
+//	}
+//
+//	@RestController
+//	@RequestMapping("/reservations/{date}")
+//	public class ReservationController {
+//
+//		@Autowired
+//		private ReservationService reservationService;
+//
+//		@GetMapping
+//		public List<RoomReservation> getReservations(@PathVariable("date") String sDate) {
+//			return this.reservationService.getRoomReservations(Date.valueOf(LocalDate.parse(sDate)));
+//		}
+//	}
 }
